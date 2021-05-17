@@ -1,0 +1,14 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 70.833px;
+        fill: #2bb0cd;
+        font-family: "Baoli SC";
+      }
+    </style>
+  </defs>
+  <image id="背景" width="60" height="60" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAW0lEQVRoge3PAQHAQAgAIbf+nf0eJzTg292dQ/5L2RE+QLhOuE64TrhOuE64TrhOuE64TrhOuE64TrhOuE64TrhOuE64TrhOuE64TrhOuE64TrhOuE64TjhtZh6HmAR0VJLvlAAAAABJRU5ErkJggg=="/>
+  <text id="Z_" data-name="Z " class="cls-1" x="8.04" y="47.552">Z</text>
+</svg>
