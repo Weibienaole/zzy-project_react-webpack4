@@ -17,7 +17,7 @@ const DllPluginMethods = require('./DllPluginMethods')
 const HappyPack = require('happypack')
 
 const PUBLIC_URL = packageJson.homepage
-
+const isProduction = process.env.NODE_ENV === 'production'
 
 
 const exclude_includeOptions = {
@@ -47,7 +47,7 @@ module.exports = {
     port: 8081,
     hot: true, // 模块热加载
     contentBase: './dist',
-    // open: true,
+    open: true,
     // progress: true
   },
   resolve: {
@@ -72,7 +72,8 @@ module.exports = {
           path.resolve(__dirname, '../node_modules/normalize.css/normalize.css')
         ],
         use: [
-          MiniCssExtractPlugin.loader,
+          // 模块热更新css需要 样式以style形式存在
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           postcssLoader
         ]
@@ -81,7 +82,7 @@ module.exports = {
         test: /\.less$/,
         ...exclude_includeOptions,
         use: [
-          MiniCssExtractPlugin.loader,
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           postcssLoader,
           'less-loader'
