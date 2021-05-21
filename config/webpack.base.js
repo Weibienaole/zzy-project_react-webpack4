@@ -13,11 +13,10 @@ const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
 
 const DllPluginMethods = require('./DllPluginMethods')
 
-// 多线程打包
-const HappyPack = require('happypack')
 
+const mode = process.env.NODE_ENV.split('_')[0]
 const PUBLIC_URL = packageJson.homepage
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = mode === 'production'
 
 
 const exclude_includeOptions = {
@@ -34,7 +33,7 @@ const postcssLoader = {
 
 // 基础配置
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode,
   entry: {
     index: path.resolve(__dirname, '../src/index.js')
   },
@@ -51,6 +50,10 @@ module.exports = {
     // progress: true
   },
   resolve: {
+    modules: [
+      path.resolve(__dirname, '../node_modules'),
+      'node_modules'
+    ],
     extensions: ['.js', '.jsx'],
     alias: {
       '@': '/src',
@@ -90,7 +93,21 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'happypack/loader?id=babel',
+        use: [
+          // thread-loader 替代happyPack实现多进程打包(happyPack已被弃用)
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 3,
+            }
+          },
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            }
+          }
+        ],
         ...exclude_includeOptions,
       },
       {
@@ -99,14 +116,44 @@ module.exports = {
           path.resolve(__dirname, '../src'),
           path.resolve(__dirname, '../node_modules/zzy-javascript-devtools/lib')
         ],
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 100 * 1024,
-            name: '[hash:8]_[name].[ext]',
-            outputPath: "static/media/"
-          }
-        }]
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 100 * 1024,
+              name: '[hash:8]_[name].[ext]',
+              outputPath: "static/media/"
+            }
+          },
+          // 安装异常，暂不使用
+          // {
+          //   loader: 'file-loader',
+          //   options: {
+          //     name: '[hash:8]_[name].[ext]',
+          //     outputPath: "static/media/"
+          //   }
+          // },
+          // {
+          //   loader: 'image-webpack-loader',
+          //   options: {
+          //     mozjpeg: {
+          //       progressive: true,
+          //       quality: 65,
+          //     },
+          //     // optipng.enabled: false will disable optipng
+          //     optipng: {
+          //       enabled: false,
+          //     },
+          //     pngquant: {
+          //       quality: [0.65, 0.9],
+          //       speed: 4,
+          //     },
+          //     gifsicle: {
+          //       interlaced: false,
+          //     },
+          //   }
+          // },
+        ]
       },
       //   ]
       // }
@@ -135,11 +182,6 @@ module.exports = {
     new InterpolateHtmlPlugin(HtmlWebPackPlugin, {
       PUBLIC_URL,
     }),
-    new HappyPack({
-      id: 'babel',
-      //  cacheDirectory用于缓存babel的编译结果，加快重新编译的速度
-      loaders: ['babel-loader?cacheDirectory']
-    }),
     new AddAssetHtmlWebpackPlugin([
       ...DllPluginMethods('path')
     ]),
@@ -150,6 +192,11 @@ module.exports = {
       },
     ]),
     ...DllPluginMethods('plugins'),
+
+    // 解决全局变量无法显示的异常
+    new webpack.DefinePlugin({
+      'process.env.DOMAIN': JSON.stringify(process.env.DOMAIN)
+    }),
   ],
   stats: {
     // 去掉mini-css-extract-plugin报的warning

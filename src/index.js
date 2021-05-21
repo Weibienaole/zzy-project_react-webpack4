@@ -11,7 +11,7 @@ devtools.JSB_init()
 // rem 设置
 devtools.setDomRem(8)
 
-if (process.env.NODE_ENV === 'production') console.log = function () { }
+// if (process.env.NODE_ENV === 'production') console.log = function () { }
 
 render(
   <App />,

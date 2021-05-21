@@ -24,9 +24,20 @@ class Page extends Component {
     //     console.log(res)
     //   })
     //   .catch((err) => console.log(err))
+    let requestObj = {
+      url: 'as',
+      data: {}
+    }
+    _request(requestObj)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => console.log(err))
   }
   render() {
-    return <div className="page-wrap">hello,react</div>
+    return <div className="page-wrap">hello,react
+    <img src={require('./image/78.png').default} alt="" />
+    </div>
   }
 }
 

@@ -2,14 +2,17 @@ import axios from 'axios'
 import { Toast } from 'antd-mobile'
 
 
+
 const BASE_URL = process.env.NODE_ENV === 'development' ? 'testmallapi' : 'mallapi'
+
 function request({ url, data = {}, token = null }) {
   Toast.loading('加载中...', 30, () => {
     Toast.hide()
     Toast.fail('加载失败，请重试', 2)
     return
   })
-  let u = `https://${BASE_URL}.klzhibo.com/${url}.do?token=${token}&time=&sign=`
+
+  let u = `https://${BASE_URL}.${process.env.DOMAIN}.com/${url}.do?token=${token}&time=&sign=`
   return new Promise((reslove, reject) => {
     axios
       .post(u, data)

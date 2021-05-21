@@ -38,7 +38,10 @@ module.exports = merge(webpackBase, {
           extractComments: false,
           condition: true,
           banner: "Create by zzy.",
+          // 开启并行压缩
           parallel: true,
+          // 开启缓存
+          cache: true,
         }
       })
     ],
@@ -80,6 +83,9 @@ module.exports = merge(webpackBase, {
         collapseWhitespace: true    //删除空白符与换行符
       }
     }),
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin({
+      analyzerPort: 9999, // 端口号
+      openAnalyzer: false
+    })
   ]
 })
