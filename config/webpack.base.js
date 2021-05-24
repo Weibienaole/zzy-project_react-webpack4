@@ -43,7 +43,7 @@ module.exports = {
   },
   cache: true,
   devServer: {
-    port: 8081,
+    // port: 8081,
     hot: true, // 模块热加载
     contentBase: './dist',
     open: true,

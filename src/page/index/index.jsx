@@ -35,6 +35,7 @@ class Page extends Component {
   }
   render() {
     return <div className="page-wrap">hello,react
+    <img src={require('./image/78.png').default} alt="" />
     </div>
   }
 }

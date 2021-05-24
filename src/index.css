@@ -1,10 +1,14 @@
-*{
+* {
   padding: 0;
   margin: 0;
   list-style: none;
   text-decoration: none;
   outline: none;
 }
-input, button{
+input,
+button {
   border: none;
+}
+body {
+  background: #fafafa;
 }
