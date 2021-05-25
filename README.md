@@ -14,6 +14,7 @@
 - 多环境多域名处理
 - 在保证包大小的情况下进行浏览器兼容处理
 - n个webpack小优化😎
+- 集成antd，并设置按需加载
 - 集成zzy-javascript-devtools(手动狗头～)
 
 
