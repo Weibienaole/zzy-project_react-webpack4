@@ -1,38 +1,56 @@
-import React from 'react'
+import { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 
-import Page from '@/page/index/index'
+/*
+  route = [
+    {
+      path: '页面路径',
+      module: '',
+      exact: '如果 children 有值，则为false，反之true',
+      childrens:[
+        ...同上
+      ]
+    }
+  ]
+
+ */
+
+const route = [
+  {
+    path: '/',
+    module: React.lazy(() => import('@/page/index'))
+  }
+]
+
+
+function Routes(route) {
+  let routes = []
+  routes = route.map(({ path, childrens, module }, index) => {
+    let Component = module
+    return (
+      <Route
+        key={'Route' + index}
+        path={path}
+        exact={!childrens}
+        render={(props) => (
+          <Component {...props}>{childrens?.length > 0 && Routes(childrens)}</Component>
+        )}
+      ></Route>
+    )
+  })
+  return routes
+}
 
 function router() {
   return (
     <HashRouter>
-      <Switch>
-        <Route path="/" exact component={Page}></Route>
-      </Switch>
+      <Suspense fallback={<div>loading...</div>}>
+        <Switch>
+          {Routes(route)}
+        </Switch>
+      </Suspense>
     </HashRouter>
   )
 }
+
 export default router
-
-
-
-/*
-<HashRouter>
-      <Switch>
-        <Route
-          path="/"
-          exact
-          render={() => (
-            // 嵌套路由
-            <Home>
-              <Route path="/Chil" exact component={Chil}></Route>
-            </Home>
-          )}
-        ></Route>
-        // 普通路由
-        <Route path="/other" component={Other}></Route>
-      </Switch>
-    </HashRouter>
-
-
-*/

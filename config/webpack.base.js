@@ -22,14 +22,19 @@ const isProduction = mode === 'production'
 const exclude_includeOptions = {
   include: path.resolve(__dirname, '../src'),
 }
-const postcssLoader = {
-  loader: 'postcss-loader',
-  options: {
-    postcssOptions: {
-      config: path.resolve(__dirname, 'postcss.config.js')
+const BasicsCssLoaders = [
+  // 模块热更新css需要 样式以style形式存在
+  isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        config: path.resolve(__dirname, 'postcss.config.js')
+      }
     }
   }
-}
+]
 
 // 基础配置
 module.exports = {
@@ -45,7 +50,7 @@ module.exports = {
   devServer: {
     // port: 8081,
     hot: true, // 模块热加载
-    contentBase: './dist',
+    contentBase: path.resolve(__dirname, '../dist'),
     open: true,
     // progress: true
   },
@@ -74,27 +79,19 @@ module.exports = {
           path.resolve(__dirname, '../node_modules/zzy-javascript-devtools'),
           path.resolve(__dirname, '../node_modules/normalize.css/normalize.css')
         ],
-        use: [
-          // 模块热更新css需要 样式以style形式存在
-          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          postcssLoader
-        ]
+        use: BasicsCssLoaders
       },
       {
         test: /\.less$/,
         ...exclude_includeOptions,
         use: [
-          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          postcssLoader,
+          ...BasicsCssLoaders,
           'less-loader'
         ]
       },
       {
         test: /\.(js|jsx)$/,
         use: [
-          // thread-loader 替代happyPack实现多进程打包(happyPack已被弃用)
           {
             loader: 'thread-loader',
             options: {
@@ -120,41 +117,27 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 100 * 1024,
-              name: '[hash:8]_[name].[ext]',
+              limit: 10 * 1024,
+              name: '[name]_[hash:6].[ext]',
               outputPath: "static/media/"
             }
           },
-          // 安装异常，暂不使用
-          // {
-          //   loader: 'file-loader',
-          //   options: {
-          //     name: '[hash:8]_[name].[ext]',
-          //     outputPath: "static/media/"
-          //   }
-          // },
-          // {
-          //   loader: 'image-webpack-loader',
-          //   options: {
-          //     mozjpeg: {
-          //       progressive: true,
-          //       quality: 65,
-          //     },
-          //     // optipng.enabled: false will disable optipng
-          //     optipng: {
-          //       enabled: false,
-          //     },
-          //     pngquant: {
-          //       quality: [0.65, 0.9],
-          //       speed: 4,
-          //     },
-          //     gifsicle: {
-          //       interlaced: false,
-          //     },
-          //   }
-          // },
         ]
       },
+      {
+        test: /\.(eot|woff2?|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              name: '[name]_[hash:6].[ext]',
+              limit: 5 * 1024, 
+              // publicPath: 'static/fonts/',
+              outputPath: 'static/fonts/'
+            }
+          }
+        ]
+      }
       //   ]
       // }
     ],
@@ -164,11 +147,11 @@ module.exports = {
     new HtmlWebPackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../public/index.html'),
-      hash: 8,
+      hash: 6,
       inject: 'body' // 在body标签下方填入标签
     }),
     new MiniCssExtractPlugin({
-      filename: './static/css/main_[hash:8].css'
+      filename: './static/css/main_[hash:6].css'
     }),
     // 设置全局变量
     new webpack.ProvidePlugin({
