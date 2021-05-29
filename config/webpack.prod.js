@@ -42,6 +42,8 @@ module.exports = merge(webpackBase, {
           parallel: true,
           // 开启缓存
           cache: true,
+          // 因此console.log
+          compress: { drop_console: true }
         }
       })
     ],

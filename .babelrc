@@ -40,6 +40,8 @@
       {
         "corejs": 3 // @babel/runtime-corejs3 不是 core-js
       }
-    ]
+    ],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-export-default-from"
   ]
 }

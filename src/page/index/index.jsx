@@ -2,7 +2,6 @@ import { withRouter, Link } from 'react-router-dom'
 import { devtools } from 'zzy-javascript-devtools'
 
 import './index.less'
-
 function Page({children}) {
   let [pageData, setPageData] = useState(1)
   useEffect(() => {
