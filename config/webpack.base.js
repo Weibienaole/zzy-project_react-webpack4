@@ -43,7 +43,8 @@ module.exports = {
     index: path.resolve(__dirname, '../src/index.js')
   },
   output: {
-    filename: './static/js/[name].js',
+    filename: './static/js/[name].[hash:6].js',
+    chunkFilename:'./static/js/[name].[hash:6].js',
     path: path.resolve(__dirname, '../dist'),
   },
   cache: true,

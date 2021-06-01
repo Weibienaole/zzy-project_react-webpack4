@@ -15,17 +15,32 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 
  */
 
+// const route = [
+//   {
+//     path: '/',
+//     module: React.lazy(() => import('@/page/index'))
+//   },
+//   {
+//     path: '/next',
+//     module: React.lazy(() => import('@/page/index'))
+//   }
+// ]
 const route = [
   {
     path: '/',
-    module: React.lazy(() => import('@/page/index'))
+    module: 'page/index'
   }
 ]
 
+function getModule(routes) {
+  return routes.map((item) => ({
+    path: item.path,
+    module: React.lazy(() => import(`@/${item.module}`))
+  }))
+}
 
 function Routes(route) {
-  let routes = []
-  routes = route.map(({ path, childrens, module }, index) => {
+  return route.map(({ path, childrens, module }, index) => {
     let Component = module
     return (
       <Route
@@ -33,21 +48,20 @@ function Routes(route) {
         path={path}
         exact={!childrens}
         render={(props) => (
-          <Component {...props}>{childrens?.length > 0 && Routes(childrens)}</Component>
+          <Component {...props}>
+            {childrens?.length > 0 && Routes(childrens)}
+          </Component>
         )}
       ></Route>
     )
   })
-  return routes
 }
 
 function router() {
   return (
     <HashRouter>
       <Suspense fallback={<div>loading...</div>}>
-        <Switch>
-          {Routes(route)}
-        </Switch>
+        <Switch>{Routes(getModule(route))}</Switch>
       </Suspense>
     </HashRouter>
   )

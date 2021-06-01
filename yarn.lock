@@ -3108,26 +3108,6 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv-cli@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv-cli/-/dotenv-cli-4.0.0.tgz#3cdd68b87ccd63c78dbfa72aab2f639bbeba5f4b"
-  integrity sha512-ByKEec+ashePEXthZaA1fif9XDtcaRnkN7eGdBDx3HHRjwZ/rA1go83Cbs4yRrx3JshsCf96FjAyIA2M672+CQ==
-  dependencies:
-    cross-spawn "^7.0.1"
-    dotenv "^8.1.0"
-    dotenv-expand "^5.1.0"
-    minimist "^1.1.3"
-
-dotenv-expand@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
-  integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
-
-dotenv@^8.1.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.6.0.tgz#061af664d19f7f4d8fc6e4ff9b584ce237adcb8b"
-  integrity sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==
-
 duplexer@^0.1.1, duplexer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
@@ -5123,7 +5103,7 @@ minimatch@3.0.4, minimatch@^3.0.4:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimist@^1.1.3, minimist@^1.2.0, minimist@^1.2.5:
+minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -8292,7 +8272,7 @@ zscroller@~0.4.0:
   dependencies:
     babel-runtime "6.x"
 
-zzy-javascript-devtools@^1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/zzy-javascript-devtools/-/zzy-javascript-devtools-1.3.4.tgz#a5afd630631aff32f44e9f926367269acb4de73c"
-  integrity sha512-VjmOjA239fVIXnG52sb/YUAnGLrSSSMAPBH84mxiroJQrG7VwXyOu16tbym7HlOJA2B311QaECYyf+dQOcMOmg==
+zzy-javascript-devtools@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/zzy-javascript-devtools/-/zzy-javascript-devtools-1.4.0.tgz#4322c8d38f690f4a7e00290f3ac66feffcd99cf1"
+  integrity sha512-FyBKzOk1qMGnQg5s1EWfN6ETinsdY1FRCnPwipwAp/rQl8gIKb1MkuSwUTmlhojy4E3GGTS9NSZjp8lvTf04lA==

@@ -54,10 +54,10 @@ module.exports = merge(webpackBase, {
           name: 'vendor',
           chunks: 'initial',
           test: /node_modules/,
-          minSize: 0, // 小于1kb的文件不进行拆分
+          minSize: 1024, // 小于1kb的文件不进行拆分
           maxSize: 300 * 1024, // 大于300kb的文件尝试拆分为小文件
           // maxInitialRequests: 3,  //首页加载的时候引入的文件最多3个
-          minChunks: 1,
+          minChunks: 2,
           priority: 1, // 权重 首先抽离
         },
         // 缓存组
