@@ -1,15 +1,15 @@
 import { render } from 'react-dom'
-import { devtools } from 'zzy-javascript-devtools'
+import { JSB_init, setDomRem } from 'zzy-javascript-devtools'
 
 import App from './App.js'
 
 import './index.css'
 
 // JSbridge 初始化
-devtools.JSB_init()
+JSB_init()
 
 // rem 设置
-devtools.setDomRem(8)
+setDomRem(8)
 
 
 

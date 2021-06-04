@@ -19,7 +19,7 @@ const PUBLIC_URL = packageJson.homepage
 const isProduction = mode === 'production'
 
 
-const exclude_includeOptions = {
+const includeOptions = {
   include: path.resolve(__dirname, '../src'),
 }
 const BasicsCssLoaders = [
@@ -84,7 +84,7 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        ...exclude_includeOptions,
+        ...includeOptions,
         use: [
           ...BasicsCssLoaders,
           'less-loader'
@@ -106,7 +106,7 @@ module.exports = {
             }
           }
         ],
-        ...exclude_includeOptions,
+        ...includeOptions,
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
@@ -126,7 +126,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.(eot|woff2?|ttf|svg)$/,
+        test: /\.(eot|woff2?|ttf)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'url-loader',
