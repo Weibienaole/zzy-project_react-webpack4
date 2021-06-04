@@ -8272,7 +8272,7 @@ zscroller@~0.4.0:
   dependencies:
     babel-runtime "6.x"
 
-zzy-javascript-devtools@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/zzy-javascript-devtools/-/zzy-javascript-devtools-1.4.0.tgz#4322c8d38f690f4a7e00290f3ac66feffcd99cf1"
-  integrity sha512-FyBKzOk1qMGnQg5s1EWfN6ETinsdY1FRCnPwipwAp/rQl8gIKb1MkuSwUTmlhojy4E3GGTS9NSZjp8lvTf04lA==
+zzy-javascript-devtools@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/zzy-javascript-devtools/-/zzy-javascript-devtools-1.4.1.tgz#cfbd8c0add04553b1cb152a0148dc65f77455a72"
+  integrity sha512-BNTRKmqpmOgolqjOEQAMiz2R/2CLP8BtUYlFEVzUQ4CvICQoiBnLEWhfo4C9cvPLKGScbwYhOaPmYQWLjaWC1g==

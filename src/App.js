@@ -1,11 +1,11 @@
 import Route from './router'
-import { ReactComponents } from 'zzy-javascript-devtools'
+import { ErrorBoundary } from 'zzy-javascript-devtools'
 function App() {
   return (
     <>
-      <ReactComponents.ErrorBoundary>
+      <ErrorBoundary>
         <Route />
-      </ReactComponents.ErrorBoundary>
+      </ErrorBoundary>
     </>
   );
 }

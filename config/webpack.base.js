@@ -160,8 +160,8 @@ module.exports = {
       Component: ['react', 'Component'],
       useState: ['react', 'useState'],
       useEffect: ['react', 'useEffect'],
-      // export default
-      '_request': [path.resolve(__dirname, '../src/utils/request.js'), 'default']
+      // default  添加默认请求
+      '_request': [path.resolve(__dirname, '../src/utils/request.js'), 'request']
     }),
     new InterpolateHtmlPlugin(HtmlWebPackPlugin, {
       PUBLIC_URL,
