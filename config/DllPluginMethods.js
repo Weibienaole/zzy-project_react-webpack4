@@ -21,12 +21,12 @@ function DllPluginMethods(type) {
         {
           filepath: path.join(`${__root}public/dll/`, '[name].manifest.json'.replace(/\[name\]/gi, name)),
           outputPath: 'dll',
-          publicPath: '/dll'
+          publicPath: './dll'
         },
         {
           filepath: path.join(`${__root}public/dll/`, dllConfig.output.filename.replace(/\[name\]/gi, name)),
           outputPath: 'dll',
-          publicPath: '/dll'
+          publicPath: './dll'
         },
       ]
     }
