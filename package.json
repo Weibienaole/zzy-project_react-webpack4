@@ -7,11 +7,11 @@
   "homepage": ".",
   "scripts": {
     "start": "cross-env NODE_ENV=development DOMAIN=domain webpack-dev-server --config ./config/webpack.dev.js",
-    "start:prod": "cross-env NODE_ENV=production DOMAIN=domain  webpack-dev-server --config ./config/webpack.prod.js",
-    "start:prod-s": "cross-env NODE_ENV=production DOMAIN=domain  webpack-dev-server --config ./config/webpack.prod.js",
-    "build": "cross-env NODE_ENV=development DOMAIN=domain  npx webpack --config ./config/webpack.dev.js",
-    "build:prod": "cross-env NODE_ENV=production DOMAIN=domain  npx webpack --config ./config/webpack.prod.js",
-    "build:prod-s": "cross-env NODE_ENV=production DOMAIN=domain  webpack-dev-server --config ./config/webpack.prod.js",
+    "start:prod": "cross-env NODE_ENV=production DOMAIN=domain webpack-dev-server --config ./config/webpack.prod.js",
+    "start:prod-s": "cross-env NODE_ENV=production DOMAIN=domain webpack-dev-server --config ./config/webpack.prod.js",
+    "build": "cross-env NODE_ENV=development DOMAIN=domain npx webpack --config ./config/webpack.dev.js",
+    "build:prod": "cross-env NODE_ENV=production DOMAIN=domain npx webpack --config ./config/webpack.prod.js",
+    "build:prod-s": "cross-env NODE_ENV=production DOMAIN=domain npx webpack --config ./config/webpack.prod.js",
     "dll": "npx webpack --config ./config/webpack_dll.config.js"
   },
   "devDependencies": {
