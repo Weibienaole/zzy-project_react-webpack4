@@ -43,8 +43,8 @@ module.exports = {
     index: path.resolve(__dirname, '../src/index.js')
   },
   output: {
-    filename: './static/js/[name].[hash:6].js',
-    chunkFilename:'./static/js/[name].[hash:6].js',
+    filename: './files/js/[name].[hash:6].js',
+    chunkFilename:'./files/js/[name].[hash:6].js',
     path: path.resolve(__dirname, '../dist'),
   },
   cache: true,
@@ -120,7 +120,7 @@ module.exports = {
             options: {
               limit: 10 * 1024,
               name: '[name]_[hash:6].[ext]',
-              outputPath: "static/media/"
+              outputPath: "files/media/"
             }
           },
         ]
@@ -134,8 +134,8 @@ module.exports = {
             options: {
               name: '[name]_[hash:6].[ext]',
               limit: 5 * 1024, 
-              // publicPath: 'static/fonts/',
-              outputPath: 'static/fonts/'
+              // publicPath: 'files/fonts/',
+              outputPath: 'files/fonts/'
             }
           }
         ]
@@ -153,7 +153,7 @@ module.exports = {
       inject: 'body' // 在body标签下方填入标签
     }),
     new MiniCssExtractPlugin({
-      filename: './static/css/main_[hash:6].css'
+      filename: './files/css/main_[hash:6].css'
     }),
     // 设置全局变量
     new webpack.ProvidePlugin({
@@ -174,6 +174,10 @@ module.exports = {
       {
         from: path.resolve(__dirname, '../public/browserIcon.svg'),
         to: './'
+      },
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: './static'
       },
     ]),
     ...DllPluginMethods('plugins'),
