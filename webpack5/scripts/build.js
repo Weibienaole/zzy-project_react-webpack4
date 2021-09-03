@@ -1,4 +1,3 @@
-const path = require('path')
 const Webpack = require('webpack')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const chalk = require('react-dev-utils/chalk');
@@ -41,7 +40,7 @@ compiler.run(function (err, status) {
   let { builtAt, outputPath, warnings, errors } = status.toJson(logConfig)
   console.log(
     `
-    创建时间：${chalk.green(format(builtAt))}
+    创建时间：${chalk.green(getTime(builtAt))}
     输出地址：${chalk.cyan(outputPath)}
     包大小查看：${chalk.magenta(mode === 'production' ? 'http://127.0.0.1:8888' : '开发环境不支持此项')}
     警告：${chalk.yellow(JSON.stringify(warnings))}
@@ -51,7 +50,7 @@ compiler.run(function (err, status) {
 });
 
 function add0(m) { return m < 10 ? '0' + m : m }
-function format(time) {
+function getTime(time) {
   //shijianchuo是整数，否则要parseInt转换
   var time = new Date(time);
   var y = time.getFullYear();

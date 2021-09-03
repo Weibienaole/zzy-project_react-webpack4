@@ -14,7 +14,7 @@ const DllPluginMethods = require('./DllPluginMethods')
 
 
 
-const mode = process.env.NODE_ENV.split('_')[0]
+const mode = process.env.NODE_ENV
 const PUBLIC_URL = packageJson.homepage
 const isProduction = mode === 'production'
 
@@ -50,14 +50,19 @@ const webpackConfig = {
     filename: './files/js/[name].[hash:6].js',
     chunkFilename: './files/js/[name].[hash:6].js',
     path: path.resolve(absolutePath, 'dist'),
+    // 打包时关闭箭头函数
+    environment: {
+      arrowFunction: false
+    },
     // 清除上一次的打包文件
     clean: {
       keep: /static/, // 保留 'static' 下的静态资源
     },
-    // publicPath: '/',
+    publicPath: '/',
   },
   // webpack5 设置了才有热更新效果 保证ie11兼容
   // 热更新会失效
+  // target: ['web', 'es5'],
   target: 'web',
   resolve: {
     modules: [
@@ -75,7 +80,7 @@ const webpackConfig = {
   module: {
     rules: [
       {
-        // 一个文件只经过一个loader
+        // 一个文件只经过一个判断
         oneOf: [
           {
             test: /\.css$/,

@@ -1,4 +1,3 @@
-const path = require('path')
 const WebpackDevServer = require('webpack-dev-server')
 const Webpack = require('webpack')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -46,9 +45,11 @@ portfinder.getPort((err, port) => {
     const devServerOptions = {
       hot: true, // 模块热加载
       open: false,
+      host: '0.0.0.0',
       client: {
         overlay: false,
       },
+      // 常开  gzip压缩 但只有在
       compress: true,
     }
 

@@ -12,11 +12,6 @@ const absolutePath = fs.realpathSync(process.cwd());
 
 // 开发环境配置
 const webpackMerge = merge(webpackBase, {
-  devServer: {
-    host: '0.0.0.0',
-    // 一切服务都启用gzip 压缩
-    compress: true,
-  },
   output: {
     // 不输出路径信息
     pathinfo: false
@@ -36,7 +31,7 @@ const webpackMerge = merge(webpackBase, {
     // 开启webpack热更新功能
     new webpack.HotModuleReplacementPlugin()
   ],
-  // 除了初始启动信息外，什么都不会写入控制台。
+  // 只在发生错误时输出
   stats: {
     preset: 'errors-only'
   },
@@ -46,7 +41,6 @@ const webpackMerge = merge(webpackBase, {
     splitChunks: {
       chunks: 'all'
     },
-    // 当开启 HMR 的时候使用该插件会显示模块的相对路径，建议用于开发环境。
     moduleIds: 'named', // NamedModulesPlugin模块 迁移
     // webpack编译出错跳过报错阶段,在编译结束后报错
     //  NoEmitOnErrorsPlugin模块迁移

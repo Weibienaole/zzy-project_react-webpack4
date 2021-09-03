@@ -1,6 +1,5 @@
 const path = require('path')
 const fs = require('fs')
-const webpack = require('webpack')
 const webpackBase = require('./webpack.base')
 const { merge } = require('webpack-merge')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
@@ -9,7 +8,6 @@ const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 
 // 打包完成之后打开一个页面，显示每个包大小
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const { cwd } = require('process')
 
 // 获取当前目录的绝对路径
 const absolutePath = fs.realpathSync(process.cwd());
@@ -33,6 +31,7 @@ module.exports = merge(webpackBase, {
           preset: [
             "default",
             {
+              // 清除注释
               discardComments: { removeAll: true },
             },
           ],
@@ -41,15 +40,13 @@ module.exports = merge(webpackBase, {
       new TerserWebpackPlugin({
         exclude: /node_modules/,
         terserOptions: {
+          // 是否将注释剥离到单独的文件中
           extractComments: false,
-          condition: true,
           // 开启并行压缩
           parallel: true,
           // 开启缓存
           cache: true,
         },
-        // 保证ie11兼容
-        // ecma: 5
       })
     ],
     splitChunks: {
@@ -80,6 +77,7 @@ module.exports = merge(webpackBase, {
           chunks: 'all',
           minSize: 1024,
           minChunks: 2,
+          // 如果当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用，而不是生成新的模块
           reuseExistingChunk: true,
           name(module, chunks, cacheGroupKey) {
             const moduleFileName = module
@@ -136,9 +134,5 @@ module.exports = merge(webpackBase, {
     moduleTrace: true,
     // 添加 错误 信息
     logging: 'error',
-    // 是否展示资源信息
-    assets: true,
-    // 资源信息排序
-    assetsSort: '!size',
   },
 })

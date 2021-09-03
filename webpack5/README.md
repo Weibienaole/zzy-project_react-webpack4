@@ -1,4 +1,4 @@
-# zzy-react-project
+# zzy-react-project(webpack5)
 
 # 基于react webpack为主的移动端项目基础框架。
 ## 当然，可以将react部分剔除，改为vue也是可以使用的
@@ -15,6 +15,8 @@
 - 在保证包大小的情况下进行浏览器兼容处理
 - n个webpack小优化😎
 - 集成antd，并设置按需加载
+- 控制台更干净，友善的提示
+- 运行，打包改用 node API 写法执行 更高的操作上限
 - 集成zzy-javascript-devtools(手动狗头～)
 
 
