@@ -52,12 +52,12 @@ compiler.run(function (err, status) {
 function add0(m) { return m < 10 ? '0' + m : m }
 function getTime(time) {
   //shijianchuo是整数，否则要parseInt转换
-  var time = new Date(time);
-  var y = time.getFullYear();
-  var m = time.getMonth() + 1;
-  var d = time.getDate();
-  var h = time.getHours();
-  var mm = time.getMinutes();
-  var s = time.getSeconds();
+  const t = new Date(time);
+  let y = t.getFullYear();
+  let m = t.getMonth() + 1;
+  let d = t.getDate();
+  let h = t.getHours();
+  let mm = t.getMinutes();
+  let s = t.getSeconds();
   return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
 }

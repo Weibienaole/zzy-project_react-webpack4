@@ -17,5 +17,5 @@ setDomRem(8)
 
 render(
   <App />,
-  document.getElementById("root")
+  document.getElementById('root')
 )

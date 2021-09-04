@@ -4,7 +4,7 @@ const webpackBase = require('./webpack.base')
 const { merge } = require('webpack-merge')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 
 // 打包完成之后打开一个页面，显示每个包大小
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -29,7 +29,7 @@ module.exports = merge(webpackBase, {
         parallel: true,
         minimizerOptions: {
           preset: [
-            "default",
+            'default',
             {
               // 清除注释
               discardComments: { removeAll: true },
@@ -62,13 +62,6 @@ module.exports = merge(webpackBase, {
           // 拆分前必须共享模块的最小 chunks 数
           minChunks: 2,
           priority: 10, // 权重
-          name(module, chunks, cacheGroupKey) {
-            const moduleFileName = module
-              .identifier()
-              .split('/')
-              .reduceRight((item) => item);
-            return `${cacheGroupKey}_${moduleFileName}`;
-          },
         },
         // 缓存组
         commons: {
@@ -79,13 +72,6 @@ module.exports = merge(webpackBase, {
           minChunks: 2,
           // 如果当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用，而不是生成新的模块
           reuseExistingChunk: true,
-          name(module, chunks, cacheGroupKey) {
-            const moduleFileName = module
-              .identifier()
-              .split('/')
-              .reduceRight((item) => item);
-            return `${cacheGroupKey}_${moduleFileName}`;
-          },
         },
         default: {
           minChunks: 2,
@@ -96,7 +82,7 @@ module.exports = merge(webpackBase, {
             const moduleFileName = module
               .identifier()
               .split('/')
-              .reduceRight((item) => item);
+              .reduceRight(item => item);
             return `${cacheGroupKey}_${moduleFileName}`;
           },
         }

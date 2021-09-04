@@ -18,4 +18,4 @@
 - 集成zzy-javascript-devtools(手动狗头～)
 
 
-大概就这些了，ESLint我还没有装，这个看个人需求咯～
+大概就这些了，ESLint在4内是没有的，5里面增有相关的配置
