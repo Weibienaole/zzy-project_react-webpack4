@@ -3,7 +3,7 @@ import { ErrorBoundary } from 'zzy-javascript-devtools'
 function App() {
   return (
     <>
-      <ErrorBoundary>
+      <ErrorBoundary mode={process.env.NODE_ENV}>
         <Route />
       </ErrorBoundary>
     </>

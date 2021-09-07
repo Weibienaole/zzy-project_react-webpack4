@@ -59,7 +59,7 @@
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "^5.7.3",
-    "zzy-javascript-devtools": "^1.4.1"
+    "zzy-javascript-devtools": "^1.4.3"
   },
   "browserslist": {
     "production": [

@@ -58,7 +58,7 @@ const webpackConfig = {
     clean: {
       keep: /static/, // 保留 'static' 下的静态资源
     },
-    publicPath: '/',
+    // publicPath: '/',
   },
   // webpack5 设置了才有热更新效果 保证ie11兼容
   // 热更新会失效
