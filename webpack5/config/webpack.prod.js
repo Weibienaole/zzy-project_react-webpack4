@@ -68,7 +68,7 @@ module.exports = merge(webpackBase, {
           test: /[\\/]src[\\/]/,
           name: 'commons',
           chunks: 'all',
-          minSize: 1024,
+          minSize: 1024 * 20,
           minChunks: 2,
           // 如果当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用，而不是生成新的模块
           reuseExistingChunk: true,
@@ -76,7 +76,7 @@ module.exports = merge(webpackBase, {
         default: {
           minChunks: 2,
           priority: -20,
-          minSize: 1024,
+          minSize: 1024 * 20,
           reuseExistingChunk: true,
           name(module, chunks, cacheGroupKey) {
             const moduleFileName = module
