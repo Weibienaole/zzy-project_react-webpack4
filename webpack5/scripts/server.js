@@ -15,7 +15,7 @@ const mode = process.env.NODE_ENV
 const webpackConfig = mode === 'development' ? webpackConfigDev : webpackConfigProd
 
 // 设置基础值
-portfinder.basePort = 8081
+portfinder.basePort = 8080
 
 portfinder.getPort((err, port) => {
   if (err) {
