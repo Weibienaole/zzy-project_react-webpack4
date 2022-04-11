@@ -10,6 +10,7 @@
     "start:prod": "cross-env NODE_ENV=production DOMAIN=domain webpack-dev-server --config ./config/webpack.prod.js",
     "start:prod-s": "cross-env NODE_ENV=production DOMAIN=domain webpack-dev-server --config ./config/webpack.prod.js",
     "build": "cross-env NODE_ENV=development DOMAIN=domain npx webpack --config ./config/webpack.dev.js",
+    "build-s": "cross-env NODE_ENV=development DOMAIN=domain npx webpack --config ./config/webpack.dev.js",
     "build:prod": "cross-env NODE_ENV=production DOMAIN=domain npx webpack --config ./config/webpack.prod.js",
     "build:prod-s": "cross-env NODE_ENV=production DOMAIN=domain npx webpack --config ./config/webpack.prod.js",
     "dll": "npx webpack --config ./config/webpack_dll.config.js"
@@ -59,7 +60,7 @@
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "^5.7.3",
-    "zzy-javascript-devtools": "^1.4.3"
+    "zzy-javascript-devtools": "^1.5.2"
   },
   "browserslist": {
     "production": [
